@@ -14,5 +14,6 @@ const model = {
     snkHead: {},
     snkBody: [],
     fruit: {},
+    highscore: [],
   //  app: document.getElementById('app')
 }
