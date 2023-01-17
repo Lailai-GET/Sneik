@@ -1,29 +1,25 @@
-//TODO Skriv om alt. hva mener jeg, alt- AAAAALT!
-
 function updateViewStart(){
-    let html = 'testing';
-    for (let i = 0; i < 10 ; i++){
-        model.board[i] = [];
-        for (let j = 0; j < 10 ; j++){
-            model.board[i][j] = {x: i, y: j};
-        }
-    }
-    for (let i = 0; i < model.board.length; i++){
-        html += /*html*/ `
-        <tr> ${createRow(i)} </tr>
-        `
-    }
-
-
-    app.innerHTML = html;
-}
-function createRow(i){
-    let rowData = ''
-    console.log(model.board[i])
-    for (let j = 0; j < model.board[i].length; j++){
-rowData += /*html*/ `
-        <td>${model.board[i][j].x} , ${model.board[i][j].y} </td>
-        `
-    }
-    return rowData;
+    let html = /*html*/ `
+    <h1> Mollys epler </h1>
+    <p>Hjelp Zaraikval å samle epler for å lage eplejuice til Molly! </p>
+    <p>Zarai har en litt feilaktig bag of holding, som blir større jo mer som er i den.
+    Den er også noe ustabil, så mens hen leter etter de beste eplene, 
+    så må hen hele tiden være forsiktig å ikke snuble over bagen så den revner.</p>
+    <p>Alle vet jo også at den beste eplejuicen er fersk. Jo flere epler, og jo fortere de samles, 
+    desto bedre eplejuice blir det.</p>
+    <p>Klarer du å lage så bra eplejuice at ingen mistenker gift?</p>
+    
+    <div class="inputs">
+    Hvor stort område skal Zaraikval finne epler på? <br>
+    <input type="range" min="10" max="60" onchange="model.start.size = this.value; updateView()" value="${model.start.size}">
+    ${model.start.size}
+    <br>
+    Hvor fort skal Zaraikval løpe? <br>
+    <input type="range" min="1" max="10" onchange="model.start.difficulty = this.value; updateView()" value="${model.start.difficulty}">
+    ${model.start.difficulty}
+    <br>
+    <button onclick="updateValues()">Eplejakt!</button>
+    </div>
+    `;
+    content.innerHTML = html;
 }

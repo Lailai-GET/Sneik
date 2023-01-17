@@ -1,4 +1,4 @@
-function createBoard(size) {
+//function createBoard(size) {
 //   columnCount = desiredValue;
 //   multiplicationMatrix = [];
 //   for (i = 1; i <= desiredValue; i++) {
@@ -6,4 +6,8 @@ function createBoard(size) {
 //       multiplicationMatrix.push(i * j);
 //     }
 //   }
+//}
+function updateValues(){
+    model.size = parseInt(model.start.size)
+    model.difficulty = parseInt(model.start.difficulty)
 }
