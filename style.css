@@ -1,4 +1,8 @@
-td {
-
+div {
+    /* display:flex; */
     border: 2px solid black;
+}
+div.rows{
+    display: flex;
+    flex-direction: row;
 }
