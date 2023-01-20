@@ -13,10 +13,10 @@ const model = {
   size: 0,
   difficulty: 0,
   board: [],
-  snkHead: { img: "<img src='img/Zaraikval.png'>"},
+  snkHead: {img: "<img src='img/Zaraikval.png'>"},
   snkBody: [],
-  fruit: {},
+  fruit: {img: "<img src='img/apple.png'>"},
   highscore: [],
   direction: "",
-  //  app: document.getElementById('app')
+  pointValue: 0,
 };

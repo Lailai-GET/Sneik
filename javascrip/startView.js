@@ -1,4 +1,9 @@
 function updateViewStart(){
+    //skriver startskjerm som beskriver backstory og funksjon og sånn
+    //bruker kan endre variabler som påvirker spillet før det starter
+    //brukerinput sendes videre til updateValues() for å endre model.data
+    //TODO Omformuler litt fordi jeg er kresen liten fis.
+    //TODO få frem en target score og raskere hastighet og mindre brett gir mer poeng
     let html = /*html*/ `
     <h1> Mollys epler </h1>
     <p>Hjelp Zaraikval å samle epler for å lage eplejuice til Molly! </p>

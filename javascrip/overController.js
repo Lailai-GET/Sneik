@@ -1,0 +1,1 @@
+//TODO legge spillers score på highscore list. firebase???????
