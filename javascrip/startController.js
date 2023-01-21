@@ -3,8 +3,10 @@ function updateValues() {
   //kaller på randoms for å lage startposisjon
   //TODO øk point value i forhold til hastighet og størrelse med morsom matte
   model.size = parseInt(model.start.size);
-  model.difficulty = parseInt(model.start.difficulty);
+  model.difficulty = 1100 -parseInt(model.start.difficulty)*100;
   model.page = "game";
+  //blanker ut direction så folk kan zoome ut og inn, rører seg ikke før starter pil
+  model.direction = "";
   createBoard(model.size);
   randomApple();
   randomStart();

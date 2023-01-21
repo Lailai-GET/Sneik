@@ -16,7 +16,7 @@ function updateViewStart(){
     
     <div class="inputs">
     Hvor stort område skal Zaraikval finne epler på? <br>
-    <input type="range" min="10" max="60" onchange="model.start.size = this.value; updateView()" value="${model.start.size}">
+    <input type="range" min="10" max="30" onchange="model.start.size = this.value; updateView()" value="${model.start.size}">
     ${model.start.size}
     <br>
     Hvor fort skal Zaraikval løpe? <br>

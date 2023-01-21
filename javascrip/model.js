@@ -19,4 +19,5 @@ const model = {
   highscore: [],
   direction: "",
   pointValue: 0,
+  direction: "",
 };
