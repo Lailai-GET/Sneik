@@ -30,4 +30,5 @@ function randomStart(){
   //henter random tall til snakehead så kan starte tilfeldig plass
   //bruk disse for å skrive om HTML på model.board
   model.snkHead.pos = [getRandom(model.size), getRandom(model.size)];
+  model.snkBody[0].pos = model.snkHead.pos;
 }

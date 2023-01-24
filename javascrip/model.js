@@ -14,7 +14,7 @@ const model = {
   difficulty: 0,
   board: [],
   snkHead: {html: "<img src='img/Zaraikval.png'>"},
-  snkBody: [],
+  snkBody: [{html: "<img src='img/BoH.png'>"}],
   fruit: {html: "<img src='img/apple.png'>"},
   highscore: [],
   direction: "",

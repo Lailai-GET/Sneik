@@ -54,13 +54,13 @@ function moveValues(snkToChange) {
   let snakePart = snkToChange;
   if (model.direction === "") return;
   else if (model.direction === "left") {
-    snakePart.pos[1]--;
+    snakePart[1]--;
   } else if (model.direction === "up") {
-    snakePart.pos[0]--;
+    snakePart[0]--;
   } else if (model.direction === "right") {
-    snakePart.pos[1]++;
+    snakePart[1]++;
   } else if (model.direction === "down") {
-    snakePart.pos[0]++;
+    snakePart[0]++;
   }
   return (snkToChange = snakePart);
 }
@@ -69,7 +69,7 @@ function runGame() {
   //TODO trigger game over
   //TODO snkBody moveloop?!
   let old = model.snkHead.pos;
-  moveValues(model.snkHead);
+  moveValues(old);
   makeBody(old);
   if (
     model.snkHead.pos[0] == model.fruit.pos[0] &&
@@ -83,9 +83,10 @@ function makeBody(oldHead) {
   //skal peke mot hodet først, så på forrige kroppsdel.
   //TODO make this shit work
   let previous = oldHead;
-  if (model.snkBody > 0) {
+  console.log(model.snkBody.length);
+  if (model.snkBody.length > 0) {
     for (let i = 0; i < model.snkBody.length; i++) {
-      console.log(". gang");
+      console.log(previous);
       model.snkBody[i] = {
         html: "<img src='img/BoH.png'>",
         pos: previous,
