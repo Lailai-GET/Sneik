@@ -69,7 +69,7 @@ function runGame() {
   //TODO trigger game over
   //TODO snkBody moveloop?!
   let old = model.snkHead.pos;
-  moveValues(old);
+  moveValues(model.snkHead.pos);
   makeBody(old);
   if (
     model.snkHead.pos[0] == model.fruit.pos[0] &&
