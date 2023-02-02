@@ -5,8 +5,6 @@ function updateValues() {
   model.size = parseInt(model.start.size);
   model.difficulty = 1100 -parseInt(model.start.difficulty)*100;
   model.page = "game";
-  //blanker ut direction så folk kan zoome ut og inn, rører seg ikke før starter pil
-  model.direction = "";
   randomApple();
   randomStart();
   updateBoard(model.size);
@@ -30,5 +28,4 @@ function randomStart(){
   //henter random tall til snakehead så kan starte tilfeldig plass
   //bruk disse for å skrive om HTML på model.board
   model.snkHead.pos = [getRandom(model.size), getRandom(model.size)];
-  model.snkBody[0].pos = model.snkHead.pos;
 }
