@@ -69,8 +69,8 @@ function runGame() {
   }
   updateView();
 }
-function makeBody(prevX, prevY) {
-  //skal peke mot hodet først, så på forrige kroppsdel.
+function makeBody() {
+  //skal peke mot hodet først, så på neste kroppsdel.
   //TODO Linkeliste???
 }
 
