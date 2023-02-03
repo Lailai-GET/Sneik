@@ -19,7 +19,8 @@ const model = {
   },
   snkBody: {
     next: null,
-    html: "<img src'img/BoH.png'>"
+    html: "<img src='img/BoH.png'>",
+    pos: [0,0]
   },
   snkGrowth: 0,
   fruit: {html: "<img src='img/apple.png'>"},

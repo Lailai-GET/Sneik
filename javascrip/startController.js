@@ -7,6 +7,7 @@ function updateValues() {
   model.page = "game";
   randomApple();
   randomStart();
+  model.snkBody.pos = model.snkHead.pos;
   updateBoard(model.size);
   updateView();
 }

@@ -1,8 +1,10 @@
+//TODO endre så det er noe .html på model.board. maybe in controller
 function updateViewGame(){
     //tegner opp spillskjermen med spillbrett
     //TODO legg til current score, muligens target score og highscore? Point value?
     let html = "";
     updateBoard(model.size);
+    readValues();
     for(let i = 0; i < model.board.length; i++){
         let boardRow = "";
         for (let j = 0; j < model.board.length; j++){
@@ -10,5 +12,6 @@ function updateViewGame(){
         }
         html += `<div class="rows">${boardRow}</div>`;
     }
+
     content.innerHTML = html;
 }
