@@ -22,7 +22,7 @@ const model = {
     html: "<img src='img/BoH.png'>",
     pos: [0,0]
   },
-  snkGrowth: 0,
+  snkGrowth: false,
   fruit: {html: "<img src='img/apple.png'>"},
   highscore: [],
   pointValue: 0,

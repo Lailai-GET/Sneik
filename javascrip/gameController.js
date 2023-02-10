@@ -11,7 +11,6 @@ function randomApple() {
   //TODO kan bruke denne til å øke score og extend snake length
   // finner tilfeldig epleposisjon
   model.fruit.pos = [getRandom(model.size), getRandom(model.size)];
-  model.snkGrowth = 1;
 }
 
 function updateBoard(size) {
@@ -62,6 +61,7 @@ function runGame() {
     model.snkHead.pos[0] == model.fruit.pos[0] &&
     model.snkHead.pos[1] == model.fruit.pos[1]
   ) {
+    model.snkGrowth = true;
     randomApple();
   }
   //checkFail();
@@ -75,8 +75,8 @@ function moveHead(inputPos) {
   let oldY = oldPos[1];
   model.snkBody = makeBody(oldX, oldY);
   model.snkHead.next = model.snkBody;
-  if (model.snkGrowth > 0) {
-    model.snkGrowth = 0;
+  if (model.snkGrowth) {
+    model.snkGrowth = false;
   } else {
     let body = model.snkBody;
     let bodyLast = null;
