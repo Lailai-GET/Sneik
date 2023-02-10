@@ -11,6 +11,9 @@ function randomApple() {
   //TODO kan bruke denne til å øke score og extend snake length
   // finner tilfeldig epleposisjon
   model.fruit.pos = [getRandom(model.size), getRandom(model.size)];
+  if(model.running){
+    model.score = model.score + model.pointValue;
+  }
 }
 
 function updateBoard(size) {

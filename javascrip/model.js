@@ -24,6 +24,7 @@ const model = {
   },
   snkGrowth: false,
   fruit: {html: "<img src='img/apple.png'>"},
+  score: 0,
   highscore: [],
   pointValue: 0,
   direction: [[0][0]],

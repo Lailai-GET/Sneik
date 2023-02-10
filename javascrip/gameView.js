@@ -2,7 +2,7 @@
 function updateViewGame(){
     //tegner opp spillskjermen med spillbrett
     //TODO legg til current score, muligens target score og highscore? Point value?
-    let html = "";
+    let html = `<h1>Score:${model.score}</h1><br>`;
     updateBoard(model.size);
     readValues();
     for(let i = 0; i < model.board.length; i++){

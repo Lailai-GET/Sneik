@@ -4,6 +4,7 @@ function updateValues() {
   //TODO øk point value i forhold til hastighet og størrelse med morsom matte
   model.size = parseInt(model.start.size);
   model.difficulty = 550 -parseInt(model.start.difficulty)*100;
+  model.pointValue = calculatePointValue();
   model.page = "game";
   randomApple();
   randomStart();
@@ -12,18 +13,15 @@ function updateValues() {
   updateView();
 }
 
-// function createBoard(size) {
-//   //Generer så nærme 2Darray en får i javascript
-//   //TODO fjern "test" fra html i objektet når er forbi testfasen
-//   let boardArray = [];
-//   for (let i = 0; i < size; i++) {
-//     boardArray[i] = [];
-//     for (let j = 0; j < size; j++) {
-//       boardArray[i][j] = { html: "test" };
-//     }
-//   }
-//   model.board = boardArray;
-// }
+function calculatePointValue(){
+  //stort brett gir mindre poeng siden du kan ha større slange, høy hastighet gir lav difficulty og mindre fratrekk
+  let maxValue = 550 + 30;//høyeste timerverdi og brettstørrelse
+  let settings = model.difficulty + model.size*4;
+  let value = maxValue-settings;
+  if(value = 990)value = 9001;
+  console.log(value);
+  return value;
+}
 
 function randomStart(){
   //henter random tall til snakehead så kan starte tilfeldig plass
