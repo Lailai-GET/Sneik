@@ -52,19 +52,20 @@ function move(key) {
     model.direction[1] = 0;
     model.direction[0] = +1;
   }
-  if (!model.running) {
+  if(!model.running){
     model.running = true;
-    runGame();
-  }
+    runGame()
+  }else runGame(true);
 }
+
 function moveValues(pos) {
   pos[0] = pos[0] + model.direction[0];
   pos[1] = pos[1] + model.direction[1];
 }
 
-function runGame() {
-  //TODO trigger game over
-  const timer = setTimeout(runGame, model.difficulty);
+function runGame(forced) {
+  let timer = null;
+  if(!forced)timer = setTimeout(runGame, model.difficulty);
   moveHead(model.snkHead);
   if (
     model.snkHead.pos[0] == model.fruit.pos[0] &&
@@ -140,16 +141,11 @@ function checkFail() {
     if(skip){
       skip = false;
     }else if (head.pos[0] == body.pos[0] && head.pos[1] == body.pos[1]) {
-      console.log(head.pos[0],
-        body.pos[0],
-        head.pos[1],
-        body.pos[1])
       triggerFail();
     }
     body = body.next;
   }
   if((head.pos[0] > model.size) || (head.pos[0] < 0) || (head.pos[1] > model.size) || (head.pos[1] < 0)){
-    console.log("wall error?")
     triggerFail();
   }
 }
