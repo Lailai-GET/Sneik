@@ -1,6 +1,5 @@
 //TODO legge til failstate
-//TODO legge til timer
-//TODO Legge til poeng
+
 function getRandom(max) {
   //henter ut et random tall mellom 0 og argument.
   let randomPosition = Math.floor(Math.random() * max);
@@ -114,15 +113,15 @@ function readValues() {
   for (let i = 0; i < model.board.length; i++) {
     for (let j = 0; j < model.board[i].length; j++) {
       if (i == model.snkHead.pos[0] && j == model.snkHead.pos[1]) {
-        model.board[i][j] = model.snkHead;
+        model.board[i][j].html = model.snkHead.html;
       } else if (i == model.fruit.pos[0] && j == model.fruit.pos[1]) {
-        model.board[i][j] = model.fruit;
+        model.board[i][j].html = model.fruit.html;
         // kjøre while-løkke som tråler gjennom body
       }else{
         let body = model.snkHead.next;
         while (body != null){
           if(i == body.pos[0] && j == body.pos[1]){
-            model.board[i][j] = body;
+            model.board[i][j].html = body.html;
           }
             body = body.next;
         }
