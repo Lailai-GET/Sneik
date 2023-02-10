@@ -74,7 +74,10 @@ function runGame(forced) {
     model.snkGrowth = true;
     randomApple();
   }
-  checkFail();
+  if(checkFail()){
+    clearTimeout(timer);
+    triggerFail();
+  }else
   updateView();
 }
 
@@ -141,15 +144,17 @@ function checkFail() {
     if(skip){
       skip = false;
     }else if (head.pos[0] == body.pos[0] && head.pos[1] == body.pos[1]) {
-      triggerFail();
+      return true;
     }
     body = body.next;
   }
   if((head.pos[0] > model.size) || (head.pos[0] < 0) || (head.pos[1] > model.size) || (head.pos[1] < 0)){
-    triggerFail();
+    return true;
   }
 }
 
 function triggerFail(){
   console.log("you deud")
+  model.page = "over";
+  updateView();
 }
