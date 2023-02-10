@@ -10,7 +10,7 @@ function randomApple() {
   //TODO kan bruke denne til å øke score og extend snake length
   // finner tilfeldig epleposisjon
   model.fruit.pos = [getRandom(model.size), getRandom(model.size)];
-  if(model.running){
+  if (model.running) {
     model.score = model.score + model.pointValue;
   }
 }
@@ -29,11 +29,11 @@ function updateBoard(size) {
 
 function move(key) {
   //gir retning, men bare om du har trykket noe
-  if(model.direction[0] === 0 && model.direction[1] === 0){
+  if (model.direction[0] === 0 && model.direction[1] === 0) {
     return;
   }
   // venstre med left eller a
-  if ((key.keyCode == 37 || key.keyCode == 65)&& model.direction[1] != 1) {
+  if ((key.keyCode == 37 || key.keyCode == 65) && model.direction[1] != 1) {
     model.direction[1] = -1;
     model.direction[0] = 0;
   }
@@ -52,10 +52,10 @@ function move(key) {
     model.direction[1] = 0;
     model.direction[0] = +1;
   }
-  if(!model.running){
-  model.running = true;
-  runGame();
-}
+  if (!model.running) {
+    model.running = true;
+    runGame();
+  }
 }
 function moveValues(pos) {
   pos[0] = pos[0] + model.direction[0];
@@ -73,7 +73,7 @@ function runGame() {
     model.snkGrowth = true;
     randomApple();
   }
-  //checkFail();
+  checkFail();
   updateView();
 }
 
@@ -117,19 +117,43 @@ function readValues() {
       } else if (i == model.fruit.pos[0] && j == model.fruit.pos[1]) {
         model.board[i][j].html = model.fruit.html;
         // kjøre while-løkke som tråler gjennom body
-      }else{
+      } else {
         let body = model.snkHead.next;
-        while (body != null){
-          if(i == body.pos[0] && j == body.pos[1]){
+        while (body != null) {
+          if (i == body.pos[0] && j == body.pos[1]) {
             model.board[i][j].html = body.html;
           }
-            body = body.next;
+          body = body.next;
         }
       }
     }
   }
 }
 
-function checkFail(){
+function checkFail() {
   //skal detektere om kræsj i vegg eller seg selv
+  let skip = true;
+  let head = model.snkHead;
+  let body = model.snkHead.next;
+  while (body != null) {
+    //skip first fordi første vil alti dele pos med head
+    if(skip){
+      skip = false;
+    }else if (head.pos[0] == body.pos[0] && head.pos[1] == body.pos[1]) {
+      console.log(head.pos[0],
+        body.pos[0],
+        head.pos[1],
+        body.pos[1])
+      triggerFail();
+    }
+    body = body.next;
+  }
+  if((head.pos[0] > model.size) || (head.pos[0] < 0) || (head.pos[1] > model.size) || (head.pos[1] < 0)){
+    console.log("wall error?")
+    triggerFail();
+  }
+}
+
+function triggerFail(){
+  console.log("you deud")
 }
