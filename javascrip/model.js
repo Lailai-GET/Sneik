@@ -29,4 +29,5 @@ const model = {
   pointValue: 0,
   direction: [[0][0]],
   running: false,
+  dead: false,
 };

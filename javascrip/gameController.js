@@ -52,10 +52,12 @@ function move(key) {
     model.direction[1] = 0;
     model.direction[0] = +1;
   }
-  if(!model.running){
-    model.running = true;
-    runGame()
-  }else runGame(true);
+  if (!model.dead) {
+    if (!model.running) {
+      model.running = true;
+      runGame();
+    } else runGame(true);
+  } else return;
 }
 
 function moveValues(pos) {
@@ -65,7 +67,7 @@ function moveValues(pos) {
 
 function runGame(forced) {
   let timer = null;
-  if(!forced)timer = setTimeout(runGame, model.difficulty);
+  if (!forced) timer = setTimeout(runGame, model.difficulty);
   moveHead(model.snkHead);
   if (
     model.snkHead.pos[0] == model.fruit.pos[0] &&
@@ -74,11 +76,10 @@ function runGame(forced) {
     model.snkGrowth = true;
     randomApple();
   }
-  if(checkFail()){
+  if (checkFail()) {
     clearTimeout(timer);
     triggerFail();
-  }else
-  updateView();
+  } else updateView();
 }
 
 function moveHead(inputPos) {
@@ -141,20 +142,26 @@ function checkFail() {
   let body = model.snkHead.next;
   while (body != null) {
     //skip first fordi første vil alti dele pos med head
-    if(skip){
+    if (skip) {
       skip = false;
-    }else if (head.pos[0] == body.pos[0] && head.pos[1] == body.pos[1]) {
+    } else if (head.pos[0] == body.pos[0] && head.pos[1] == body.pos[1]) {
       return true;
     }
     body = body.next;
   }
-  if((head.pos[0] > model.size) || (head.pos[0] < 0) || (head.pos[1] > model.size) || (head.pos[1] < 0)){
+  if (
+    head.pos[0] > model.size ||
+    head.pos[0] < 0 ||
+    head.pos[1] > model.size ||
+    head.pos[1] < 0
+  ) {
     return true;
   }
 }
 
-function triggerFail(){
-  console.log("you deud")
+function triggerFail() {
+  model.dead = true;
+  console.log("you deud");
   model.page = "over";
   updateView();
 }

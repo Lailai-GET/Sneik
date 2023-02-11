@@ -3,19 +3,17 @@
 //TODO highscorelist med 3letter nickname
 //TODO knapp for retry
 function updateViewOver(){
+    makeNewScore();
+    let highscoreList = sortHighScores();
     let html =/*html*/ `
         <h1>Game over!<h1>
         <p>Poeng: ${model.score}</p>
-        <p>fancyschmancy måte å skjekke plassering på highscore-list<br>
-        hvor score kommer med inputfelt</p>
+        ${displayRank()}
         <p>
-            input here
+            input here for nickname
         </p> 
         <p>
-            restart here
-        </p> 
-        <p>
-           TODO push hichscore og print top 3 på gameview
+            restart her, skal bare funke om nickname != "Din score: "
         </p> 
 
     `;
