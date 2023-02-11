@@ -1,6 +1,6 @@
 //TODO legge til sluttskjerm med game over
 //TODO regne ut om spiller fullførte minimumsscore?
-//TODO highscorelist med 3letter nickname
+//TODO highscorelist med 8letter nickname
 //TODO knapp for retry
 function updateViewOver() {
   makeNewScore();
@@ -10,10 +10,18 @@ function updateViewOver() {
         <p>Poeng: ${model.score}</p>
         ${displayRank()}
         <p>
-            input here for nickname
+            Nickname:
+            <input
+            placeholder="Blanke navn legges ikke til i highscore"
+            type="text"
+            onchange="model.over.nickname = this.value"
+            maxlength="8"
+            >
         </p> 
         <p>
-            restart her, skal bare funke om nickname != "Din score: "
+            <button onclick="restart(model.over.nickname)">
+                Prøv på nytt!
+            </button>
         </p> 
 
     `;
@@ -22,7 +30,7 @@ function updateViewOver() {
 
 function displayRank() {
   //burde kunne forenkles, men jeg aner ikke hvordan
-  let list = model.highscores;
+  let list = model.tempScores[0];
   let html = "";
   for (let index = 0; index < list.length; index++) {
     if (list[index].name == "Din score: ") {
