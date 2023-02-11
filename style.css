@@ -18,3 +18,7 @@ div.main {
   justify-content: center;
   border: 2px solid black;
 }
+
+.zarai{
+  z-index: 5;
+}

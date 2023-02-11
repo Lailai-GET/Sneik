@@ -15,7 +15,7 @@ const model = {
   board: [],
   snkHead: {
     next: null,
-    html: "<img src='img/Zaraikval.png'>"
+    html: "<img class='zarai' src='img/Zaraikval.png'>"
   },
   snkBody: {
     next: null,

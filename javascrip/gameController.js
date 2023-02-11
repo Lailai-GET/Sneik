@@ -26,37 +26,56 @@ function updateBoard(size) {
 
 function move(key) {
   //gir retning, men bare om du har trykket noe
-  if (model.direction[0] === 0 && model.direction[1] === 0) {
-    return;
+  if (correctKey(key)) {
+    if ((key.keyCode == 37 || key.keyCode == 65) && model.direction[1] != 1) {
+      // venstre med left eller a
+      model.direction[1] = -1;
+      model.direction[0] = 0;
+    } else if (
+      (key.keyCode == 38 || key.keyCode == 87) &&
+      model.direction[0] != 1
+    ) {
+      //opp med up eller w
+      model.direction[1] = 0;
+      model.direction[0] = -1;
+    } else if (
+      (key.keyCode == 39 || key.keyCode == 68) &&
+      model.direction[1] != -1
+    ) {
+      //høyre med right eller d
+      model.direction[1] = +1;
+      model.direction[0] = 0;
+    } else if (
+      (key.keyCode == 40 || key.keyCode == 83) &&
+      model.direction[0] != -1
+    ) {
+      //ned med down eller s
+      model.direction[1] = 0;
+      model.direction[0] = +1;
+    }
+    if (!model.dead) {
+      //skjekker at du ikke er død så du fortsetter å dø hvert knappetrykk.
+      if (!model.running) {
+        //starter timer ved første trykk, hopper over timer ellers
+        model.running = true;
+        runGame();
+      } else runGame(true);
+    } else return;
   }
-  else if ((key.keyCode == 37 || key.keyCode == 65) && model.direction[1] != 1) {
-    // venstre med left eller a
-    model.direction[1] = -1;
-    model.direction[0] = 0;
-  }
-  else if ((key.keyCode == 38 || key.keyCode == 87) && model.direction[0] != 1) {
-    //opp med up eller w
-    model.direction[1] = 0;
-    model.direction[0] = -1;
-  }
-  else if ((key.keyCode == 39 || key.keyCode == 68) && model.direction[1] != -1) {
-    //høyre med right eller d
-    model.direction[1] = +1;
-    model.direction[0] = 0;
-  }
-  else if ((key.keyCode == 40 || key.keyCode == 83) && model.direction[0] != -1) {
-    //ned med down eller s
-    model.direction[1] = 0;
-    model.direction[0] = +1;
-  }
-  if (!model.dead) {
-    //skjekker at du ikke er død så du fortsetter å dø hvert knappetrykk.
-    if (!model.running) {
-      //starter timer ved første trykk, hopper over timer ellers
-      model.running = true;
-      runGame();
-    } else runGame(true);
-  } else return;
+}
+function correctKey(key) {
+  if (
+    key.keyCode == 37 ||
+    key.keyCode == 65 ||
+    key.keyCode == 38 ||
+    key.keyCode == 87 ||
+    key.keyCode == 39 ||
+    key.keyCode == 68 ||
+    key.keyCode == 40 ||
+    key.keyCode == 83
+  ) {
+    return true;
+  } else return false;
 }
 
 function moveValues(pos) {
