@@ -2,10 +2,10 @@
 //TODO regne ut om spiller fullførte minimumsscore?
 //TODO highscorelist med 3letter nickname
 //TODO knapp for retry
-function updateViewOver(){
-    makeNewScore();
-    let highscoreList = sortHighScores();
-    let html =/*html*/ `
+function updateViewOver() {
+  makeNewScore();
+  let highscoreList = sortHighScores();
+  let html = /*html*/ `
         <h1>Game over!<h1>
         <p>Poeng: ${model.score}</p>
         ${displayRank()}
@@ -17,18 +17,17 @@ function updateViewOver(){
         </p> 
 
     `;
-    content.innerHTML = html;
+  content.innerHTML = html;
 }
 
-
 function displayRank() {
-    //burde kunne forenkles, men jeg aner ikke hvordan
-    let list = model.highscores;
-    let html = "";
-    for (let index = 0; index < list.length; index++) {
-      if (list[index].name == "Din score: ") {
-        if (index == 0) {
-          html += /*html*/ `
+  //burde kunne forenkles, men jeg aner ikke hvordan
+  let list = model.highscores;
+  let html = "";
+  for (let index = 0; index < list.length; index++) {
+    if (list[index].name == "Din score: ") {
+      if (index == 0) {
+        html += /*html*/ `
                   <h2>Gratulerer! Ny highscore!</h2>
                   <h3> ${index + 1}: 
                       ${list[index].name} 
@@ -47,8 +46,8 @@ function displayRank() {
                       ${list[index + 3].score}
                   </p>
                   `;
-        } else {
-          html += /*html*/ `
+      } else {
+        html += /*html*/ `
                   <h3>Din plassering: ${index + 1}</h3>
                   ${
                     list[index - 3] != undefined
@@ -60,14 +59,14 @@ function displayRank() {
                       : ""
                   }
                   ${
-                      list[index - 2] != undefined
-                        ? `
+                    list[index - 2] != undefined
+                      ? `
                         <p> ${index - 1}: 
                             ${list[index - 2].name} 
                             ${list[index - 2].score}
                         </p>`
-                        : ""
-                    }
+                      : ""
+                  }
                     ${
                       list[index - 1] != undefined
                         ? `
@@ -110,9 +109,8 @@ function displayRank() {
                         : ""
                     }
                   `;
-        }
       }
     }
-    return html;
   }
-  
+  return html;
+}
