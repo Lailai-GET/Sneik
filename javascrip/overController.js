@@ -33,3 +33,24 @@ function sorter(list) {
     })
     .reverse();
 }
+
+function restart(name){
+    if(characterCheck(name)){
+        console.log(name,"nick");
+    }else{
+        console.log("It virks")
+    }
+}
+
+function characterCheck(name){
+   var letters = /^[a-zA-Z0-9-]+$/;
+   if(name.match(letters))
+     {
+      return true;
+     }
+   else
+     {
+     alert("Kun tall og bokstaver. Poeng slettet. Sorry.");
+     return false;
+     }
+  }

@@ -31,5 +31,4 @@ const model = {
   direction: [[0][0]],
   running: false,
   dead: false,
-  noname: true,
 };

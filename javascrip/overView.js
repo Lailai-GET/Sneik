@@ -10,18 +10,16 @@ function updateViewOver() {
         <p>Poeng: ${model.score}</p>
         ${displayRank()}
         <p>
-            Nickname:
-            <input
-            placeholder="Blanke navn legges ikke til i highscore"
-            type="text"
-            onchange="model.over.nickname = this.value"
-            maxlength="8"
-            >
-        </p> 
-        <p>
-            <button onclick="restart(model.over.nickname)">
-                Prøv på nytt!
-            </button>
+            <label for="nick">Nickname:</label>
+            <input 
+                type="text" 
+                maxlength="8"
+                placeholder="Kun tall og bokstaver"
+                onchange="model.over.nickname = this.value" 
+                value="${model.over.nickname}">
+            <input type="submit" value="Spill igjen!" onclick="restart(model.over.nickname)">
+            <br>
+            Tomme navn blir slettet
         </p> 
 
     `;
