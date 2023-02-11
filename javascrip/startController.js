@@ -1,7 +1,6 @@
 function updateValues() {
   //setter alle verdiene til data i modellen utifra user input på startskjerm
   //kaller på randoms for å lage startposisjon
-  //TODO øk point value i forhold til hastighet og størrelse med morsom matte
   model.size = parseInt(model.start.size);
   model.difficulty = 100 -parseInt(model.start.difficulty)*9;
   model.pointValue = calculatePointValue();
@@ -18,8 +17,8 @@ function calculatePointValue(){
   let maxValue = 100 + 30;//høyeste timerverdi og brettstørrelse
   let settings = model.difficulty + model.size;
   let value = maxValue-settings;
-  if(value == 990)value = 9001;//easteregg, highest points for minst brett og kjappest speed. får over nine thousand per eple, men LYKKE TIL!
   value = parseInt(value);
+  if(value == 110)value = 9001;//it's over 9000, good luck
   return value;
 }
 

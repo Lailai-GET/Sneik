@@ -1,7 +1,8 @@
 
 function updateViewOver() {
-  makeNewScore();
-  let highscoreList = sortHighScores();
+  //legger til poengsum i midlertidig array, 
+  //legger kun til score i highscores om det er gyldig navn
+  sortHighScores();
   let html = /*html*/ `
         <h1>Game over!<h1>
         <p>Din eplejuice ble ${model.score} god</p>
@@ -27,6 +28,9 @@ function updateViewOver() {
 
 function displayRank() {
   //burde kunne forenkles, men jeg aner ikke hvordan
+  //skal vise 3 plasser foran og bak med din i midten
+  //føltes litt rart å skulle skrive en hel for-loop for hver side
+  //So here we are, if not undefined, så skriver vi, så ikke står undefined undefined
   let list = model.tempScores[0];
   let html = "";
   for (let index = 0; index < list.length; index++) {

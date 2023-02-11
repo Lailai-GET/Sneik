@@ -1,11 +1,10 @@
-//TODO hvorfor pusher den tomme navn?
 //TODO  firebase???????
 function sortHighScores() {
   let list = model.tempScores;
   list.push(
     model.highscores.map((content) => {
       //om jeg pusher model.highscores, så blir det referanseverdi?
-      //løste vet å pushe hvert objekt for seg...
+      //løste ved å pushe hvert objekt for seg...
       return content;
     })
   );
