@@ -25,11 +25,7 @@ const model = {
   snkGrowth: false,
   fruit: {html: "<img src='img/apple.png'>"},
   score: 0,
-  highscore: {
-    scores: [2220, 111, 333,],//kun poengverdi for easy sorting
-    sorted: [],
-    full: [{name:"test2",score:2220},{name:"test1",score:111},{name:"test3",score:333}],//poeng kombinert med nickname, sammenlign med scores etter den er sorted
-  },
+  highscores: [{name:"test2",score:2220},{name:"test1",score:111},{name:"test3",score:333}],
   pointValue: 0,
   direction: [[0][0]],
   running: false,
