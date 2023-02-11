@@ -1,14 +1,11 @@
-//TODO Den slutter å vise slange om trykker noe annet enn riktige knapper
-
 function getRandom(max) {
-  //henter ut et random tall mellom 0 og argument.
+  //henter ut et random tall mellom 0 og parameter.
   let randomPosition = Math.floor(Math.random() * max);
   return randomPosition;
 }
 
 function randomApple() {
-  //TODO kan bruke denne til å øke score og extend snake length
-  // finner tilfeldig epleposisjon
+  // finner tilfeldig epleposisjon, gir poeng om spillet kjører
   model.fruit.pos = [getRandom(model.size), getRandom(model.size)];
   if (model.running) {
     model.score = model.score + model.pointValue;
@@ -32,28 +29,30 @@ function move(key) {
   if (model.direction[0] === 0 && model.direction[1] === 0) {
     return;
   }
-  // venstre med left eller a
   else if ((key.keyCode == 37 || key.keyCode == 65) && model.direction[1] != 1) {
+    // venstre med left eller a
     model.direction[1] = -1;
     model.direction[0] = 0;
   }
-  //opp med up eller w
   else if ((key.keyCode == 38 || key.keyCode == 87) && model.direction[0] != 1) {
+    //opp med up eller w
     model.direction[1] = 0;
     model.direction[0] = -1;
   }
-  //høyre med right eller d
   else if ((key.keyCode == 39 || key.keyCode == 68) && model.direction[1] != -1) {
+    //høyre med right eller d
     model.direction[1] = +1;
     model.direction[0] = 0;
   }
-  //ned med down eller s
   else if ((key.keyCode == 40 || key.keyCode == 83) && model.direction[0] != -1) {
+    //ned med down eller s
     model.direction[1] = 0;
     model.direction[0] = +1;
   }
   if (!model.dead) {
+    //skjekker at du ikke er død så du fortsetter å dø hvert knappetrykk.
     if (!model.running) {
+      //starter timer ved første trykk, hopper over timer ellers
       model.running = true;
       runGame();
     } else runGame(true);
@@ -61,11 +60,13 @@ function move(key) {
 }
 
 function moveValues(pos) {
+  //endrer objektets pos-array med hvilken retning de skal
   pos[0] = pos[0] + model.direction[0];
   pos[1] = pos[1] + model.direction[1];
 }
 
 function runGame(forced) {
+  //kaller på funksjoner for å kjøre spillet
   let timer = null;
   if (!forced) timer = setTimeout(runGame, model.difficulty);
   moveHead(model.snkHead);
@@ -83,6 +84,8 @@ function runGame(forced) {
 }
 
 function moveHead(inputPos) {
+  //flytter på hodet, og linker posisjon til neste kroppsdel
+  //Jeg skjønner det nok til å jobbe med, men kunne ikke laget fra scratch
   let oldPos = inputPos.pos;
   moveValues(oldPos);
   let oldX = oldPos[0];
@@ -105,7 +108,7 @@ function moveHead(inputPos) {
 }
 
 function makeBody(posX, posY) {
-  //returnerer et objekt med posisjon som har forrige posisjon, bilde
+  //returnerer et objekt med posisjon som har forrige posisjon og bilde
   return {
     html: "<img src='img/BoH.png'>",
     pos: [posX, posY],
@@ -121,10 +124,10 @@ function readValues() {
         model.board[i][j].html = model.snkHead.html;
       } else if (i == model.fruit.pos[0] && j == model.fruit.pos[1]) {
         model.board[i][j].html = model.fruit.html;
-        // kjøre while-løkke som tråler gjennom body
       } else {
         let body = model.snkHead.next;
         while (body != null) {
+          // leter gjennom body, stopper ved siste element
           if (i == body.pos[0] && j == body.pos[1]) {
             model.board[i][j].html = body.html;
           }
@@ -160,6 +163,7 @@ function checkFail() {
 }
 
 function triggerFail() {
+  //endrer state og kjører sluttskjermen
   model.dead = true;
   console.log("you deud");
   model.page = "over";

@@ -26,7 +26,7 @@ const model = {
   fruit: {html: "<img src='img/apple.png'>"},
   score: 0,
   highscores: [{name:"ingenting",score:0}],
-  tempScores: [],//bruke denne så kan oppdatere highscores kun ved gyldig kallenavn
+  tempScores: [],
   pointValue: 0,
   direction: [[0][0]],
   running: false,

@@ -1,10 +1,12 @@
 //TODO  firebase???????
 function sortHighScores() {
+  //legger highscores til midlertidig array, legger til current score
+  //sorterer med current score som del av temp array
   let list = model.tempScores;
   list.push(
     model.highscores.map((content) => {
       //om jeg pusher model.highscores, så blir det referanseverdi?
-      //løste ved å pushe hvert objekt for seg...
+      //løste ve å pushe hvert objekt for seg...
       return content;
     })
   );
@@ -13,7 +15,7 @@ function sortHighScores() {
 }
 
 function makeNewScore() {
-  //sender current score til highscore-list
+  //sender current score til middlertidig highscore-list
   return {
     name: "Din score: ",
     score: model.score,
@@ -21,7 +23,7 @@ function makeNewScore() {
 }
 
 function sorter(list) {
-  //sorterer highscores etter score
+  //sorterer highscores etter .score
   return list.sort((a, b) => {
     if (a.score < b.score) {
       return 1;
