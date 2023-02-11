@@ -18,7 +18,7 @@ function updateViewOver() {
                 value="${model.over.nickname}">
             <input type="submit" value="Spill igjen!" onclick="restart(model.over.nickname)">
             <br>
-            Tomme navn blir ikke slettet. i need to fix
+            Tomme navn blir slettet.
         </p> 
 
     `;

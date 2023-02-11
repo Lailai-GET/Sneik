@@ -25,7 +25,7 @@ const model = {
   snkGrowth: false,
   fruit: {html: "<img src='img/apple.png'>"},
   score: 0,
-  highscores: [{name:"test2",score:2220},{name:"test1",score:111},{name:"test3",score:333}],
+  highscores: [{name:"ingenting",score:0}],
   tempScores: [],//bruke denne så kan oppdatere highscores kun ved gyldig kallenavn
   pointValue: 0,
   direction: [[0][0]],

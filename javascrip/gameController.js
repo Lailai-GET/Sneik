@@ -21,7 +21,7 @@ function updateBoard(size) {
   for (let i = 0; i < size; i++) {
     boardArray[i] = [];
     for (let j = 0; j < size; j++) {
-      boardArray[i][j] = { html: "test" };
+      boardArray[i][j] = { html: "" };
     }
   }
   model.board = boardArray;
@@ -33,22 +33,22 @@ function move(key) {
     return;
   }
   // venstre med left eller a
-  if ((key.keyCode == 37 || key.keyCode == 65) && model.direction[1] != 1) {
+  else if ((key.keyCode == 37 || key.keyCode == 65) && model.direction[1] != 1) {
     model.direction[1] = -1;
     model.direction[0] = 0;
   }
   //opp med up eller w
-  if ((key.keyCode == 38 || key.keyCode == 87) && model.direction[0] != 1) {
+  else if ((key.keyCode == 38 || key.keyCode == 87) && model.direction[0] != 1) {
     model.direction[1] = 0;
     model.direction[0] = -1;
   }
   //høyre med right eller d
-  if ((key.keyCode == 39 || key.keyCode == 68) && model.direction[1] != -1) {
+  else if ((key.keyCode == 39 || key.keyCode == 68) && model.direction[1] != -1) {
     model.direction[1] = +1;
     model.direction[0] = 0;
   }
   //ned med down eller s
-  if ((key.keyCode == 40 || key.keyCode == 83) && model.direction[0] != -1) {
+  else if ((key.keyCode == 40 || key.keyCode == 83) && model.direction[0] != -1) {
     model.direction[1] = 0;
     model.direction[0] = +1;
   }

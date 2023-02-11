@@ -22,28 +22,29 @@ function makeNewScore() {
 }
 
 function sorter(list) {
-    //sorterer highscores etter score
-  return list
-    .sort((a, b) => {
-      if (a.score < b.score) {
-        return 1;
-      }
-      if (a.score > b.score) {
-        return -1;
-      }
-      return 0;
-    })
+  //sorterer highscores etter score
+  return list.sort((a, b) => {
+    if (a.score < b.score) {
+      return 1;
+    }
+    if (a.score > b.score) {
+      return -1;
+    }
+    return 0;
+  });
 }
 
 function restart(inputName) {
-  //ser først om nickname inneholder tegn, så setter modellen til startverdi og kjører på nytt
+  //ser først om nickname inneholder tegn eller er blank, 
+  //så setter modellen til startverdi og kjører på nytt
   if (characterCheck(inputName)) {
-    console.log(inputName == "","if this true then wy?")
-    model.highscores.push({
-      name: inputName,
-      score: model.score,
-    });
-    sorter(model.highscores);
+    if (inputName != "") {
+      model.highscores.push({
+        name: inputName,
+        score: model.score,
+      });
+      sorter(model.highscores);
+    }
   }
   model.page = "start";
   model.snkHead = {
@@ -65,14 +66,11 @@ function restart(inputName) {
 }
 
 function characterCheck(name) {
-    //skjønner ikke helt syntax, men den filtrer ut tegn
+  //skjønner ikke helt syntax, men den filtrer ut tegn
   if (/^[A-Za-z0-9æÆøØåÅ]*$/.test(name)) {
     return true;
   } else {
-    if (name == "") {
-
-      return false;
-    } else alert("Kun tall og bokstaver, poeng slettet");
+    alert("Kun tall og bokstaver, poeng slettet");
     return false;
   }
 }
