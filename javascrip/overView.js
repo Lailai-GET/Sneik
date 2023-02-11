@@ -1,17 +1,16 @@
-//TODO legge til sluttskjerm med game over
-//TODO regne ut om spiller fullførte minimumsscore?
-//TODO highscorelist med 8letter nickname
-//TODO knapp for retry
+
 function updateViewOver() {
   makeNewScore();
   let highscoreList = sortHighScores();
   let html = /*html*/ `
         <h1>Game over!<h1>
-        <p>Poeng: ${model.score}</p>
+        <p>Din eplejuice ble ${model.score} god</p>
+        <h1>Highscores:</h1>
         ${displayRank()}
         <p>
             <label for="nick">Nickname:</label>
             <input 
+                name="nick"
                 type="text" 
                 maxlength="8"
                 placeholder="Kun tall og bokstaver"
@@ -19,7 +18,7 @@ function updateViewOver() {
                 value="${model.over.nickname}">
             <input type="submit" value="Spill igjen!" onclick="restart(model.over.nickname)">
             <br>
-            Tomme navn blir slettet
+            Tomme navn blir ikke slettet. i need to fix
         </p> 
 
     `;
@@ -39,18 +38,33 @@ function displayRank() {
                       ${list[index].name} 
                       ${list[index].score}
                   </h3>
-                  <p> ${index + 2}: 
-                      ${list[index + 1].name} 
-                      ${list[index + 1].score}
-                  </p>
-                  <p> ${index + 3}: 
-                      ${list[index + 2].name} 
-                      ${list[index + 2].score}
-                  </p>
-                  <p>${index + 4}: 
-                      ${list[index + 3].name} 
-                      ${list[index + 3].score}
-                  </p>
+                  ${
+                    list[index + 1] != undefined
+                      ? `
+                      <p> ${index + 2}: 
+                          ${list[index + 1].name} 
+                          ${list[index + 1].score}
+                      </p>`
+                      : ""
+                  }
+                  ${
+                    list[index + 2] != undefined
+                      ? `
+                      <p> ${index + 3}: 
+                          ${list[index + 2].name} 
+                          ${list[index + 2].score}
+                      </p>`
+                      : ""
+                  }
+                  ${
+                    list[index + 3] != undefined
+                      ? `
+                      <p> ${index + 4}: 
+                          ${list[index + 3].name} 
+                          ${list[index + 3].score}
+                      </p>`
+                      : ""
+                  }
                   `;
       } else {
         html += /*html*/ `

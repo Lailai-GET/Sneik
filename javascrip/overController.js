@@ -1,4 +1,5 @@
-//TODO legge spillers score på highscore list. firebase???????
+//TODO hvorfor pusher den tomme navn?
+//TODO  firebase???????
 function sortHighScores() {
   let list = model.tempScores;
   list.push(
@@ -21,36 +22,57 @@ function makeNewScore() {
 }
 
 function sorter(list) {
+    //sorterer highscores etter score
   return list
     .sort((a, b) => {
-      if (a.score > b.score) {
+      if (a.score < b.score) {
         return 1;
       }
-      if (a.score < b.score) {
+      if (a.score > b.score) {
         return -1;
       }
       return 0;
     })
-    .reverse();
 }
 
-function restart(name){
-    if(characterCheck(name)){
-        console.log(name,"nick");
-    }else{
-        console.log("It virks")
-    }
-}
-
-function characterCheck(name){
-   var letters = /^[a-zA-Z0-9-]+$/;
-   if(name.match(letters))
-     {
-      return true;
-     }
-   else
-     {
-     alert("Kun tall og bokstaver. Poeng slettet. Sorry.");
-     return false;
-     }
+function restart(inputName) {
+  //ser først om nickname inneholder tegn, så setter modellen til startverdi og kjører på nytt
+  if (characterCheck(inputName)) {
+    console.log(inputName == "","if this true then wy?")
+    model.highscores.push({
+      name: inputName,
+      score: model.score,
+    });
+    sorter(model.highscores);
   }
+  model.page = "start";
+  model.snkHead = {
+    next: null,
+    html: "<img src='img/Zaraikval.png'>",
+  };
+  model.snkBody = {
+    next: null,
+    html: "<img src='img/BoH.png'>",
+    pos: [0, 0],
+  };
+  model.snkGrowth = false;
+  model.score = 0;
+  model.tempScores = [];
+  model.direction = [[0][0]];
+  model.running = false;
+  model.dead = false;
+  updateView();
+}
+
+function characterCheck(name) {
+    //skjønner ikke helt syntax, men den filtrer ut tegn
+  if (/^[A-Za-z0-9æÆøØåÅ]*$/.test(name)) {
+    return true;
+  } else {
+    if (name == "") {
+
+      return false;
+    } else alert("Kun tall og bokstaver, poeng slettet");
+    return false;
+  }
+}

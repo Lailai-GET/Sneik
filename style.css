@@ -1,13 +1,20 @@
 div {
-    display:flex;
-    flex-direction: column;
-    border: 2px solid black;
-    width: fit-content;
+  display: flex;
+  flex-direction: column;
 }
-div.rows{
-    flex-direction: row;
+div.rows {
+  flex-direction: row;
 }
-div.cell{
-    height: 30px;
-    width: 30px;
+div.cell {
+  border: 2px solid black;
+  height: 30px;
+  width: 30px;
+}
+
+div.main {
+  margin: auto;
+  width: fit-content;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid black;
 }

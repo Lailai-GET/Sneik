@@ -1,4 +1,4 @@
-//TODO legge til failstate
+//TODO Den slutter å vise slange om trykker noe annet enn riktige knapper
 
 function getRandom(max) {
   //henter ut et random tall mellom 0 og argument.

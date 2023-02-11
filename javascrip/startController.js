@@ -3,7 +3,7 @@ function updateValues() {
   //kaller på randoms for å lage startposisjon
   //TODO øk point value i forhold til hastighet og størrelse med morsom matte
   model.size = parseInt(model.start.size);
-  model.difficulty = 550 -parseInt(model.start.difficulty)*100;
+  model.difficulty = 100 -parseInt(model.start.difficulty)*9;
   model.pointValue = calculatePointValue();
   model.page = "game";
   randomApple();
@@ -15,10 +15,11 @@ function updateValues() {
 
 function calculatePointValue(){
   //stort brett gir mindre poeng siden du kan ha større slange, høy hastighet gir lav difficulty og mindre fratrekk
-  let maxValue = 550 + 30;//høyeste timerverdi og brettstørrelse
-  let settings = model.difficulty + model.size*4;
+  let maxValue = 100 + 30;//høyeste timerverdi og brettstørrelse
+  let settings = model.difficulty + model.size;
   let value = maxValue-settings;
   if(value == 990)value = 9001;//easteregg, highest points for minst brett og kjappest speed. får over nine thousand per eple, men LYKKE TIL!
+  value = parseInt(value);
   return value;
 }
 
