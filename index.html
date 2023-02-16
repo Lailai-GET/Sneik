@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>It's a sneeeik</title>
-    <link rel="shortcut icon" href="img/Zaraikval.png">
+    <link rel="shortcut icon" href="img/Zaraikval.png" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
@@ -16,9 +16,40 @@
     <script src="javascrip/overController.js"></script>
   </head>
   <body onkeydown="return move(event)">
-    <div class="main" id="app"></div>
+    <div class="main" id="screen"></div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+      import { getFirestore } from "firebase/firestore";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDBTyVM-i0iUosfg2XGxN5pxB_zgpwFFdk",
+        authDomain: "epler-4ec5f.firebaseapp.com",
+        projectId: "epler-4ec5f",
+        storageBucket: "epler-4ec5f.appspot.com",
+        messagingSenderId: "155256950944",
+        appId: "1:155256950944:web:a989620f1b630ba1f079c5",
+        measurementId: "G-FDGCMLPF3D",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+      import { collection, getDocs } from "firebase/firestore";
+
+      const querySnapshot = await getDocs(collection(db, "scores"));
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      });
+    </script>
     <script>
-      const content = document.getElementById("app");
+      const content = document.getElementById("screen");
 
       updateView();
       function updateView() {
