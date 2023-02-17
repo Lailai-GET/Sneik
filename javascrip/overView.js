@@ -6,6 +6,7 @@ function updateViewOver() {
   let html = /*html*/ `
         <h1>Game over!<h1>
         <p>Din eplejuice ble ${model.score} god</p>
+        ${model.score >= 9000 ? '<img src="img/over9000.gif"></img>' : ""}
         <h1>Highscores:</h1>
         ${displayRank()}
         <p>
