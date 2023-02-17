@@ -172,10 +172,10 @@ function checkFail() {
     body = body.next;
   }
   if (
-    head.pos[0] > model.size ||
-    head.pos[0] < 0 ||
-    head.pos[1] > model.size ||
-    head.pos[1] < 0
+    head.pos[0] >= model.size ||
+    head.pos[0] <= -1 ||
+    head.pos[1] >= model.size ||
+    head.pos[1] <= -1
   ) {
     return true;
   }

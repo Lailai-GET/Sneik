@@ -46,7 +46,7 @@ function restart(inputName) {
       });
       sorter(model.highscores);
     }
-  }
+  } else return;
   model.page = "start";
   model.snkHead = {
     next: null,
@@ -71,7 +71,7 @@ function characterCheck(name) {
   if (/^[A-Za-z0-9æÆøØåÅ]*$/.test(name)) {
     return true;
   } else {
-    alert("Kun tall og bokstaver, poeng slettet");
+    alert("Kun tall og bokstaver");
     return false;
   }
 }
