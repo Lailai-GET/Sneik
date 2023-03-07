@@ -31,4 +31,5 @@ const model = {
   direction: [[0][0]],
   running: false,
   dead: false,
+  online:{list:[]},
 };

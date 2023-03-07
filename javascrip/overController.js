@@ -45,6 +45,15 @@ function restart(inputName) {
         score: model.score,
       });
       sorter(model.highscores);
+      model.online.list = model.highscores;
+      import('./firebase.js')
+      .then(module => {
+        const result = module.setHighscores();
+        console.log(result);
+      })
+      .catch(error => {
+        console.error(error);
+      });
     }
   } else return;
   model.page = "start";

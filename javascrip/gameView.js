@@ -2,7 +2,7 @@ function updateViewGame(){
     //tegner opp spillskjermen med spillbrett
     let html = `
     <div>Score:${model.score}</div>
-    <div>Highcore:  ${model.highscores[0].name}   ${model.highscores[0].score}</div>
+    <div>Highcore: ${model.highscores ?`${model.highscores[0].name}   ${model.highscores[0].score}` : "Du er første. Hei!"}</div>
     `;
     updateBoard(model.size);
     readValues();

@@ -2,7 +2,7 @@ function updateViewStart(){
     //skriver startskjerm som beskriver backstory og funksjon og sånn
     //bruker kan endre variabler som påvirker spillet før det starter
     //brukerinput sendes videre til updateValues() for å endre model.data
-    //TODO Omformuler litt fordi jeg er kresen liten fis.
+    updateLocalData();
     let html = /*html*/ `
     <h1> Mollys epler </h1>
     <p>Hjelp Zaraikval å samle epler for å lage eplejuice til Molly! </p>

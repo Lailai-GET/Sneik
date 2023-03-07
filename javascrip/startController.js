@@ -1,3 +1,4 @@
+
 function updateValues() {
   //setter alle verdiene til data i modellen utifra user input på startskjerm
   //kaller på randoms for å lage startposisjon
@@ -9,6 +10,7 @@ function updateValues() {
   randomStart();
   model.snkBody.pos = model.snkHead.pos;
   updateBoard(model.size);
+  model.highscores = model.online.list;
   updateView();
 }
 
@@ -26,4 +28,16 @@ function randomStart(){
   //henter random tall til snakehead så kan starte tilfeldig plass
   //bruk disse for å skrive om HTML på model.board
   model.snkHead.pos = [getRandom(model.size), getRandom(model.size)];
+}
+
+function updateLocalData(){
+  import('./firebase.js')
+  .then(module => {
+    const result = module.getHighscores();
+    console.log(result);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  sorter(model.highscores);
 }
